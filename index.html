@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest Task</title>
+</head>
+<body>
+    <script>
+
+        let request=new XMLHttpRequest()
+        request.open('GET','https://restcountries.com/v3.1/all')
+        request.send()
+        request.onload=function(){
+            let data=JSON.parse(request.response)
+            console.log(data)
+     
+        // Display all country flags    
+        for(var key in data)
+        {
+            console.log("Flag: "+data[key].flag)
+          
+        // print name,region,subregion,population
+            console.log("Name: "+data[key].name.common)
+            console.log("Region: "+data[key].region)
+            console.log("SubRegion: "+data[key].subregion)
+            console.log("population: "+data[key].population)
+        }
+        }
+
+         //Compare Two Json Have Same Properties
+         let obj1 = {name:"Person 1",age:5}
+        let obj2 = {age:5,name:"Person 1"}
+        if(_.isEqual(obj1,obj2)){
+            console.log("Same")
+        }
+        else{
+            console.log("Not Same")
+        }
+
+    </script>
+</body>
+</html>
